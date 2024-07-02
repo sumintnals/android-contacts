@@ -53,8 +53,8 @@ class AddContactActivity : AppCompatActivity() {
                 || emailText.isNotEmpty() || birthDayText.isNotEmpty()
                 || genderText.isNotEmpty() || memoText.isNotEmpty()
             )
-            {contactManager.showCancelAlert(this@AddContactActivity, "작성 중인 내용이 있습니다. 정말 나가시겠습니까?")}
-            else contactManager.showCancelAlert(this@AddContactActivity, "나가시겠습니까?")
+            {contactManager.showCancelAlert(this@AddContactActivity, R.string.EXIT_INFO_ALERT_TEXT.toString())}
+            else contactManager.showCancelAlert(this@AddContactActivity, R.string.EXIT_ALERT_TEXT.toString())
         }
 
         save.setOnClickListener {
@@ -63,24 +63,24 @@ class AddContactActivity : AppCompatActivity() {
             val emailText = email.text.toString()
             val birthDayText = birthDay.text.toString()
             val genderText = when (gender.checkedRadioButtonId) {
-                R.id.radioMale -> "Male"
-                R.id.radioFemale -> "Female"
+                R.id.radioMale -> "남성"
+                R.id.radioFemale -> "여성"
                 else -> ""
             }
             val memoText = memo.text.toString()
 
             if (nameText.isNotBlank() && phoneNumberText.isNotBlank()) {
-                intent.putExtra("nameText", nameText)
-                intent.putExtra("emailText", emailText)
-                intent.putExtra("phoneNumberText", phoneNumberText)
-                intent.putExtra("birthDayText", birthDayText)
-                intent.putExtra("genderText", genderText)
-                intent.putExtra("memoText", memoText)
+                intent.putExtra(Constants.EXTRA_NAME_TEXT, nameText)
+                intent.putExtra(Constants.EXTRA_EMAIL_TEXT, emailText)
+                intent.putExtra(Constants.EXTRA_PHONE_NUMBER_TEXT, phoneNumberText)
+                intent.putExtra(Constants.EXTRA_BIRTH_DAY_TEXT, birthDayText)
+                intent.putExtra(Constants.EXTRA_GENDER_TEXT, genderText)
+                intent.putExtra(Constants.EXTRA_MEMO_TEXT, memoText)
                 setResult(RESULT_OK, intent)
-                contactManager.showToast(this@AddContactActivity, "저장되었습니다.")
+                contactManager.showToast(this@AddContactActivity, R.string.CONTACT_SAVED_TEXT.toString())
                 finish()
             } else {
-                contactManager.showToast(this@AddContactActivity, "이름과 번호 입력은 필수입니다.")
+                contactManager.showToast(this@AddContactActivity, R.string.CONDITION_NOT_MET_MESSAGE.toString())
             }
         }
     }

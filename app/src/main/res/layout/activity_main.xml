@@ -20,7 +20,7 @@
         android:textAlignment="center"
         android:visibility="gone"
         android:layout_marginHorizontal="20dp"
-        android:text="우측 아래 버튼을 눌러\n연락처를 추가해보세요."
+        android:text="@string/EMPTY_VIEW_TEXT"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

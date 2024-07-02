@@ -19,12 +19,12 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         val intent = intent
-        val nameText = intent.getStringExtra("nameText") ?: ""
-        val phoneNumberText = intent.getStringExtra("phoneNumberText") ?: ""
-        val emailText = intent.getStringExtra("emailText") ?: ""
-        val birthDayText = intent.getStringExtra("birthDayText") ?: ""
-        val genderText = intent.getStringExtra("genderText") ?: ""
-        val memoText = intent.getStringExtra("memoText") ?: ""
+        val nameText = intent.getStringExtra(Constants.EXTRA_NAME_TEXT) ?: ""
+        val phoneNumberText = intent.getStringExtra(Constants.EXTRA_PHONE_NUMBER_TEXT) ?: ""
+        val emailText = intent.getStringExtra(Constants.EXTRA_EMAIL_TEXT) ?: ""
+        val birthDayText = intent.getStringExtra(Constants.EXTRA_BIRTH_DAY_TEXT) ?: ""
+        val genderText = intent.getStringExtra(Constants.EXTRA_GENDER_TEXT) ?: ""
+        val memoText = intent.getStringExtra(Constants.EXTRA_MEMO_TEXT) ?: ""
 
         val emailLayout = findViewById<LinearLayoutCompat>(R.id.emailLayout)
         val birthDayLayout = findViewById<LinearLayoutCompat>(R.id.birthDayLayout)

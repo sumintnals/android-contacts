@@ -34,18 +34,16 @@ class MainActivity : AppCompatActivity() {
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
-                val name = result.data?.getStringExtra("nameText") ?: ""
-                val phoneNumber = result.data?.getStringExtra("phoneNumberText") ?: ""
-                val email = result.data?.getStringExtra("emailText") ?: ""
-                val birthDay = result.data?.getStringExtra("birthDayText") ?: ""
-                val gender = result.data?.getStringExtra("genderText") ?: ""
-                val memo = result.data?.getStringExtra("memoText") ?: ""
+                val name = result.data?.getStringExtra(Constants.EXTRA_NAME_TEXT) ?: ""
+                val phoneNumber = result.data?.getStringExtra(Constants.EXTRA_PHONE_NUMBER_TEXT) ?: ""
+                val email = result.data?.getStringExtra(Constants.EXTRA_EMAIL_TEXT) ?: ""
+                val birthDay = result.data?.getStringExtra(Constants.EXTRA_BIRTH_DAY_TEXT) ?: ""
+                val gender = result.data?.getStringExtra(Constants.EXTRA_GENDER_TEXT) ?: ""
+                val memo = result.data?.getStringExtra(Constants.EXTRA_MEMO_TEXT) ?: ""
 
                 val contact = Contact(name, phoneNumber, email, birthDay, gender, memo)
                 contactList.add(contact)
                 contactAdapter.notifyDataSetChanged()
-
-                Log.d("음..", ""+ contactAdapter.itemCount)
                 contactManager.viewText(emptyView, contactAdapter.itemCount)
             }
         }
@@ -61,12 +59,12 @@ class MainActivity : AppCompatActivity() {
                 val item = contactList[position]
                 val intent = Intent(this@MainActivity, DetailActivity::class.java)
 
-                intent.putExtra("nameText", item.name)
-                intent.putExtra("emailText", item.email)
-                intent.putExtra("phoneNumberText", item.phoneNumber)
-                intent.putExtra("birthDayText", item.birthDay)
-                intent.putExtra("genderText", item.gender)
-                intent.putExtra("memoText", item.memo)
+                intent.putExtra(Constants.EXTRA_NAME_TEXT, item.name)
+                intent.putExtra(Constants.EXTRA_EMAIL_TEXT, item.email)
+                intent.putExtra(Constants.EXTRA_PHONE_NUMBER_TEXT, item.phoneNumber)
+                intent.putExtra(Constants.EXTRA_BIRTH_DAY_TEXT, item.birthDay)
+                intent.putExtra(Constants.EXTRA_GENDER_TEXT, item.gender)
+                intent.putExtra(Constants.EXTRA_MEMO_TEXT, item.memo)
 
                 startActivity(intent)
             }
