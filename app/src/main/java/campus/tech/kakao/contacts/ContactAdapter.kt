@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ContactAdapter(val itemList: List<Contact>,
-                     var inflater: LayoutInflater
+                     val inflater: LayoutInflater
 ): RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
     interface OnItemClickListener {
